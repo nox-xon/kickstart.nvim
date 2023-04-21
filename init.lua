@@ -1,3 +1,76 @@
+--my stuff
+
+vim.g.mapleader = ' '
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.bo.softtabstop = 2
+
+function Map( from, to, desc )
+
+  if type(desc) == "nil" then
+
+    desc = {silent = true}
+  end
+
+  vim.api.nvim_set_keymap( 'n', from, to, desc )
+  vim.api.nvim_set_keymap( 'v', from, to, desc )
+
+end
+
+function Imap( from, to, desk )
+
+  if type(desk) == "nil" then
+
+    desk = {silent = true}
+  end
+
+  vim.api.nvim_set_keymap( 'n', from, to, desk )
+  vim.api.nvim_set_keymap( 'v', from, to, desk )
+
+end
+
+-- insert
+Map( '<leader><CR>', 'i' )
+
+-- navigation
+Map( 'l', '<Left>' )
+Map( ';', '<Down>' )
+Map( '\'', '<Up>' )
+Map( '<CR>', '<Right>' )
+Map( 'w', 'b' )
+
+-- creating lines 
+Map( '<leader>o', 'o<Esc>')
+Map( '<leader>O', 'O<Esc>')
+
+-- do & redo
+Map( '<leader>.', 'u' )
+Map( '<leader>,', '<C-r>' )
+
+
+-- yanking
+Map( '.', 'y' )
+Map( '..', 'yy' )
+Map( '.iw', 'yiw' )
+
+-- tabs
+Map( '<leader>vt', ':tabnew<CR>', { desc = 'new tab' } )
+Map( '<leader>vs', '<C-w>s', { desc = 'right split ' } )
+Map( '<leader>vv', '<C-w>v', { desc = 'top split' } )
+
+Map( '<leader>vl', '<C-w>h', { desc = 'navigate split left' } )
+Map( '<leader>v;', '<C-w>j', { desc = 'navigate split down' } )
+Map( '<leader>v\'', '<C-w>k', { desc = 'navigate split up' } )
+Map( '<leader>v<CR>', '<C-w>l', { desc = 'navigate split right' } )
+
+-- increase tab sizes
+Map( '-', '<C-w>-' )
+Map( '=', '<C-w>+' )
+Map( '_', '<C-w><' )
+Map( '+', '<C-w>>' )
+
+
 --[[
 
 =====================================================================
